@@ -1,0 +1,115 @@
+/* Ensure full-page height and margin reset */
+html, body {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    background: rgb(16, 16, 16);
+    height: 100%;
+    margin: 0;   
+    padding: 10px; 
+    box-sizing: border-box;
+    overflow: auto;
+}  
+.container {
+  background: linear-gradient(73deg,#3974e2,#88628f,#b8fefd,#a07d84);
+  background-size: 240% 240%;
+  animation: gradient-animation 4s ease infinite;
+  display: flex;
+  flex-direction: column; /* Arrange child divs in a column */   
+  width: 70vh; /* Adjust container width */
+  height: 100%; /* Adjust container height */
+  border: 1px solid rgb(16, 16, 16); /* Main container border */  
+  box-sizing: border-box; /* Include padding in width/height */  
+  border-radius: 20px; 
+  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.2), /* Shadow for bottom-right */
+  inset -4px -4px 6px rgba(255, 255, 255, 0.6);
+  background-size: 240% 240%;
+  animation: gradient-animation 4s ease infinite;
+}  
+.child {
+  /* Ensure borders and padding don't overflow */
+  border: solid black 2px;          
+  width: 95%;
+  font-size: x-large;
+  border-radius: 5px;    
+  align-self: center;
+  margin: 5px 5px 5px 5px;
+}
+#keys{
+  height: 60%;
+  display: grid; 
+  background-color: rgba(237, 228, 228, 0.033);  
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(4,1fr);
+  gap: 10px;
+  box-sizing: border-box;    
+  overflow: auto;  
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2), 
+  inset 0px 1px 6px rgb(12 11 11 / 60%)
+
+}
+#display{
+  height: 40%;  
+  overflow-y: auto;   
+  background-color: rgb(7, 7, 7); 
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+    
+} 
+span{
+    margin: 10px;
+    font-size: xx-large;   
+    word-break: break-word; /* Break long words to avoid overflow */
+    overflow-wrap: break-word; /* Handle wrapping for long text */
+    text-align: right; 
+    color: thistle;
+}
+button{    
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 90%;
+    width: 80%;
+    height: 80%;  
+    background-color: rgb(102, 122, 122);  
+    border: 0px;   
+    font-size: xx-large;
+    cursor: grab;    
+    box-shadow: 0 0 60px 0 rgba(207, 1, 208, 0.8),
+	            2px -1px 80px 20px #08070700,
+	            0 0 40px 10px rgba(245, 20, 245, 0.54),
+	            inset 0 0 10px 0 #ffb3d5;
+}
+
+button:hover{
+    background-color: rgb(230, 165, 45);
+    box-shadow: 4px 4px 4px rgb(22, 22, 22);
+    width: 84%;
+    height: 84%;        
+}
+button:active{
+    background-color: #ee6a6a;    
+}
+
+button:focus {
+  outline: none;  
+}
+.del:hover{
+    background-color: rgb(228, 57, 57);
+}
+.del:active{
+    background-color: rgb(247, 4, 4);
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
