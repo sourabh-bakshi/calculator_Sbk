@@ -47,6 +47,10 @@ document.addEventListener('keyup', (event) => {
         let content = display.querySelector('span').textContent;   
         display.querySelector('span').textContent = content.slice(0, -1);
         numbers = numbers.slice(0,-1);
+        if(display.querySelector('span').textContent.length == 0)
+            {
+                numbers = '';
+            }
     }
     else        
     if(event.key.charCodeAt(0) >= 42 && event.key.charCodeAt(0) <= 57 &&
