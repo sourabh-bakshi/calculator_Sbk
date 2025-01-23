@@ -5,7 +5,6 @@ const eq = document.querySelector('.equal');
 var ptag = document.querySelector('span');
 var numbers = '';
 
-
 eq.addEventListener('click', () => {
     calc()
 })
@@ -35,7 +34,8 @@ del.addEventListener('click', () =>{
     let content = display.querySelector('span').textContent;
     
     display.querySelector('span').textContent = content.slice(0, -1);
-    if(ptag.textContent.length == 0)
+    console.log(display.querySelector('span').textContent.length);
+    if(display.querySelector('span').textContent.length == 0)
     {
         numbers = '';
     }
