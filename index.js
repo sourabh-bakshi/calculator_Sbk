@@ -5,6 +5,7 @@ const eq = document.querySelector('.equal');
 var ptag = document.querySelector('span');
 var numbers = '';
 
+
 eq.addEventListener('click', () => {
     calc()
 })
@@ -27,7 +28,6 @@ buttons.forEach(button =>
             numbers += button.textContent;
         }
         
-        console.log(numbers);
     })
 )
 
@@ -35,6 +35,10 @@ del.addEventListener('click', () =>{
     let content = display.querySelector('span').textContent;
     
     display.querySelector('span').textContent = content.slice(0, -1);
+    if(ptag.textContent.length == 0)
+    {
+        numbers = '';
+    }
 })
 
 document.addEventListener('keyup', (event) => {
