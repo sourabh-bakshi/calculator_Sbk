@@ -2,69 +2,73 @@ const buttons = document.querySelectorAll('.buttons');
 const display = document.querySelector('#display');
 const del = document.querySelector('.del');
 const eq = document.querySelector('.equal');
-var ptag = document.querySelector('span');
-var numbers = '';
+let ptag = document.querySelector('span');
+let numbers = '';
 
-eq.addEventListener('click', () => {
-    calc()
-})
+//function to be called whenever number is changed in anyway
+function updateDisplay(content){
+    if(!ptag)
+    {
+        ptag = document.createElement('span');
+        display.appendChild(ptag);
+        // display.innerHTML += `<div class="ESC">Press ESC To Clear</div>`;
+    }
+    ptag.textContent = content;   
+}
+//delete character used in backspace and delete button
+function delLastChar(){
+    numbers = numbers.slice(0,-1);
+    updateDisplay(numbers || '');
+}
+
+//function for = or enter for final calculations
+function calc()
+{
+    
+    try {
+        if(numbers){
+            let result = eval(numbers);
+            numbers = result.toString();            
+            updateDisplay(numbers);
+        }
+    } catch (error) {
+        updateDisplay(error);
+        numbers = '';
+    }
+    
+}
+
+
 
 buttons.forEach(button => 
     button.addEventListener('click', (e)=> {
+        const content = e.target.textContent;
 
-        if(!ptag)
+        if(content === 'X')
         {
-            ptag = document.createElement('span');
-            display.appendChild(ptag);
+            numbers += '*';            
         }
-        if(e.target.textContent == 'X')
+        else
         {
-            ptag.textContent += '*';          
-            numbers += '*';
-        }else
-        {
-            ptag.textContent += button.textContent;      
-            numbers += button.textContent;
-        }
+            numbers += content;
+        }        
+        updateDisplay(numbers);
         
     })
 )
+eq.addEventListener('click', calc);
 
-del.addEventListener('click', () =>{
-    let content = display.querySelector('span').textContent;
-    
-    display.querySelector('span').textContent = content.slice(0, -1);
-    console.log(display.querySelector('span').textContent.length);
-    if(display.querySelector('span').textContent.length == 0)
-    {
-        numbers = '';
-    }
-})
+del.addEventListener('click', delLastChar);
 
 document.addEventListener('keyup', (event) => {
-    if(event.key == 'Backspace')
+
+    const key = event.key;
+
+    if(key == 'Backspace')
     {
-        let content = display.querySelector('span').textContent;   
-        display.querySelector('span').textContent = content.slice(0, -1);
-        numbers = numbers.slice(0,-1);
-        if(display.querySelector('span').textContent.length == 0)
-            {
-                numbers = '';
-            }
+        delLastChar();
     }
     else        
-    if(event.key.charCodeAt(0) >= 42 && event.key.charCodeAt(0) <= 57 &&
-    event.key.charCodeAt(0) != 44)
-    {
-        if(!ptag)
-            {
-                ptag = document.createElement('span');
-                display.appendChild(ptag);
-            }
-            ptag.textContent += event.key;
-            numbers += event.key;            
-    }
-    else 
     if(event.key == 'Enter')   
     {
         calc()
@@ -73,23 +77,16 @@ document.addEventListener('keyup', (event) => {
     if(event.key == 'Escape')   
     {
         numbers = '';
-        display.querySelector('span').textContent = '';
+        updateDisplay(numbers);
+    }
+    else 
+    if(/[\d+\-*/]/.test(key))
+    {
+        numbers += key;
+        updateDisplay(numbers);
     }
     
 })
-
-function calc()
-{
-    if(numbers){
-        let result = eval(numbers);
-        console.log(result);
-        display.querySelector('span').textContent = result; 
-        // numbers = result;
-    }
-    
-}
-
-
 
 
 
