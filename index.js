@@ -13,7 +13,7 @@ function updateDisplay(content){
         display.appendChild(ptag);
         // display.innerHTML += `<div class="ESC">Press ESC To Clear</div>`;
     }
-    ptag.textContent = content;   
+    ptag.textContent = content;  
 }
 //delete character used in backspace and delete button
 function delLastChar(){
@@ -29,7 +29,7 @@ function calc()
         if(numbers){
             let result = eval(numbers);
             numbers = result.toString();            
-            updateDisplay(numbers);
+            updateDisplay(numbers);     
         }
     } catch (error) {
         updateDisplay(error);
@@ -37,8 +37,6 @@ function calc()
     }
     
 }
-
-
 
 buttons.forEach(button => 
     button.addEventListener('click', (e)=> {
@@ -80,13 +78,14 @@ document.addEventListener('keyup', (event) => {
         updateDisplay(numbers);
     }
     else 
-    if(/[\d+\-*/]/.test(key))
+    if(!isNaN(key) || key === '+' || key === '-' || key === '*' || key === '/' || key === '.')
     {
         numbers += key;
         updateDisplay(numbers);
     }
     
 })
+        
 
 
 
