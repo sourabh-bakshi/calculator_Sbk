@@ -70,6 +70,7 @@ span{
 }
 button{    
     margin: 10px;
+    color: rgb(17, 17, 17);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +79,7 @@ button{
     height: 80%;  
     background-color: rgb(102, 122, 122);  
     border: 0px;   
-    font-size: xx-large;
+    font-size: xx-large;    
     cursor: grab;    
     box-shadow: 0 0 60px 0 rgba(207, 1, 208, 0.8),
 	            2px -1px 80px 20px #08070700,
