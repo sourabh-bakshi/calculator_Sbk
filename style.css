@@ -148,7 +148,7 @@ button:focus{
   button {
     width: 70%; /* Adjust button width for smaller screens */
     height: 70%; /* Adjust button height for smaller screens */
-    font-size: xx-large; /* Adjust button font size for smaller screens */
+    font-size: x-large; /* Adjust button font size for smaller screens */
   }
   
   .ESC {
