@@ -147,7 +147,7 @@ button:focus{
   button {
     width: 70%; /* Adjust button width for smaller screens */
     height: 70%; /* Adjust button height for smaller screens */
-    font-size: large; /* Adjust button font size for smaller screens */
+    font-size: xx-large; /* Adjust button font size for smaller screens */
   }
   
   .ESC {
@@ -156,8 +156,8 @@ button:focus{
     font-size: medium; /* Adjust ESC font size for smaller screens */
   }
 }
- @media (hover:none) {
+ /* @media (hover:none) {
   button:hover {
     pointer-events: none; /* Change cursor to pointer for touch devices */
-   }
-} 
+   /* }
+}   */
