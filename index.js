@@ -2,9 +2,21 @@ const buttons = document.querySelectorAll('.buttons');
 const display = document.querySelector('#display');
 const del = document.querySelector('.del');
 const eq = document.querySelector('.equal');
+const esc =  document.querySelector('.ESC');
 let ptag = document.querySelector('span');
 let numbers = '';
 
+//set visisbility of ESC button
+function setVisibility(){
+    if(numbers)
+    {
+        esc.style.visibility = 'visible';
+    }
+    else
+    {
+        esc.style.visibility = 'hidden';
+    }
+}
 //function to be called whenever number is changed in anyway
 function updateDisplay(content){
     if(!ptag)
@@ -14,6 +26,7 @@ function updateDisplay(content){
         // display.innerHTML += `<div class="ESC">Press ESC To Clear</div>`;
     }
     ptag.textContent = content;  
+    setVisibility();
 }
 //delete character used in backspace and delete button
 function delLastChar(){
