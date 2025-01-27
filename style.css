@@ -100,11 +100,11 @@ button:hover{
     width: 84%;
     height: 84%;        
 }
-button:active{
+/* button:active{
     background-color: #ee6a6a;    
     outline: none;
     border: none;
-}
+} */
 button:focus{
     outline: none;
     border: none;
@@ -129,9 +129,9 @@ button:focus{
 .del:hover{
     background-color: rgb(228, 57, 57);
 }
-.del:active{
+/* .del:active{
     background-color: rgb(247, 4, 4);
-}
+} */
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
@@ -163,10 +163,12 @@ button:focus{
     height: 10%; /* Adjust ESC height for smaller screens */
     font-size: medium; /* Adjust ESC font size for smaller screens */
   }
-  button:hover {
-    cursor: default;
-    background-color: inherit;
-    color: inherit;
+  
+}
+@media (pointer: coarse) {
+  button:active{
+    background-color: #ee6a6a;   
   }
+  
 }
  
