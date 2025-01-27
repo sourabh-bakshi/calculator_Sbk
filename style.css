@@ -164,7 +164,14 @@ button.active{
     height: 10%; /* Adjust ESC height for smaller screens */
     font-size: medium; /* Adjust ESC font size for smaller screens */
   }
+  button:hover {
+    width: initial; /* Adjust button hover width for smaller screens */
+    height: initial; /* Adjust button hover height for smaller screens */
+    background-color: initial;
+    box-shadow: initial;
+  }
   
 }
+
 
  
