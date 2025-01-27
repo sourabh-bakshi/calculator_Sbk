@@ -6,6 +6,22 @@ const esc =  document.querySelector('.ESC');
 let ptag = document.querySelector('span');
 let numbers = '';
 
+buttons.forEach(button =>{
+    tapEffect(button);
+});
+
+    
+function tapEffect(el) {
+    el.addEventListener('touchstart', () => {
+        el.classList.add('active');
+    }, { passive: true });
+    el.addEventListener('touchend', () => {
+        el.classList.remove('active');
+    }, { passive: true });
+    el.addEventListener('touchcancel', () => {
+        el.classList.remove('active');
+    }, { passive: true });
+}
 //set visisbility of ESC button
 function setVisibility(){
     if(numbers)
@@ -70,6 +86,8 @@ buttons.forEach(button =>
 eq.addEventListener('click', calc);
 
 del.addEventListener('click', delLastChar);
+tapEffect(del);
+tapEffect(eq);
 
 document.addEventListener('keyup', (event) => {
 
