@@ -1,4 +1,7 @@
 /* Ensure full-page height and margin reset */
+*{
+  box-sizing: border-box;
+}
 html, body {
     display: flex;
     justify-content: center;  
@@ -25,6 +28,8 @@ html, body {
   inset -4px -4px 6px rgba(255, 255, 255, 0.6);
   background-size: 240% 240%;
   animation: gradient-animation 4s ease infinite;
+  justify-content: space-around;
+  
 }  
 .child {
   /* Ensure borders and padding don't overflow */
@@ -33,10 +38,10 @@ html, body {
   font-size: x-large;
   border-radius: 5px;    
   align-self: center;
-  margin: 5px 5px 5px 5px;
+  
 }
 #keys{
-  height: 60%;
+  height: 58%;
   border-radius: 10px;
   display: grid; 
   background-color: rgba(237, 228, 228, 0.033);  
@@ -50,7 +55,7 @@ html, body {
 
 }
 #display{
-  height: 40%;  
+  height: 38%;  
   overflow-y: auto;   
   background-color: rgb(7, 7, 7); 
   display: flex;
@@ -148,7 +153,7 @@ button:focus{
   button {
     width: 70%; /* Adjust button width for smaller screens */
     height: 70%; /* Adjust button height for smaller screens */
-    font-size: x-large; /* Adjust button font size for smaller screens */
+    font-size: large; /* Adjust button font size for smaller screens */
   }
   
   .ESC {
@@ -161,4 +166,4 @@ button:focus{
   button:hover {
     pointer-events: none; /* Change cursor to pointer for touch devices */
    /* }
-}   */
+}   
