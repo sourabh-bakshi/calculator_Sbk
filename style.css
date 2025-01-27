@@ -38,7 +38,8 @@ html, body {
   font-size: x-large;
   border-radius: 5px;    
   align-self: center;
-  
+  padding: 0px;
+  margin: 0px;  
 }
 #keys{
   height: 58%;
@@ -75,6 +76,7 @@ span{
 }
 button{    
     margin: 10px;
+    box-sizing: border-box;
     color: rgb(17, 17, 17);
     display: flex;
     justify-content: center;
@@ -161,9 +163,10 @@ button:focus{
     height: 10%; /* Adjust ESC height for smaller screens */
     font-size: medium; /* Adjust ESC font size for smaller screens */
   }
-}
- /* @media (hover:none) {
   button:hover {
-    pointer-events: none; /* Change cursor to pointer for touch devices */
-   /* }
-}   
+    cursor: default;
+    background-color: inherit;
+    color: inherit;
+  }
+}
+ 
