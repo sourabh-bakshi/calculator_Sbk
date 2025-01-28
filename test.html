@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for devices with hover capability (desktops) */
+  @media (hover: hover) {
+    .button:hover {
+      background-color: blue; /* Change to blue on hover */
+    }
+  }
+  
+  /* Touch devices: Tap effect using :active */
+  @media (hover: none) {
+    .button:active {
+      background-color: red; /* Change to red when tapped */
+    }
+  }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <button class="button">click / tap on me</button>
+        </h1>
+    </header>
+</body>
+</html>
