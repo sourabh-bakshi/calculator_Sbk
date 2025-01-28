@@ -6,33 +6,27 @@ const esc =  document.querySelector('.ESC');
 let ptag = document.querySelector('span');
 let numbers = '';
 
+//adding tapeffect for touch devices
 buttons.forEach(button =>{
     tapEffect(button);
-});
-
     
+});
+    
+//the tap effect function that adds n remove the touch effect using class
 function tapEffect(el) {
-    el.addEventListener('touchstart', () => {
-        el.classList.add('active');
-    }, { passive: true });
-    el.addEventListener('touchend', () => {
-        el.classList.remove('active');
-    }, { passive: true });
-    el.addEventListener('touchcancel', () => {
-        el.classList.remove('active');
-    }, { passive: true });
+    el.addEventListener('touchstart',()=>{
+        el.classList.add('buttonHover');
+        
+    })   
+    el.addEventListener('touchend',()=>{
+        el.classList.remove('buttonHover');
+    });
 }
 //set visisbility of ESC button
 function setVisibility(){
-    if(numbers)
-    {
-        esc.style.visibility = 'visible';
-    }
-    else
-    {
-        esc.style.visibility = 'hidden';
-    }
+    esc.style.visibility = numbers ? 'visible' : 'hidden';
 }
+
 //function to be called whenever number is changed in anyway
 function updateDisplay(content){
     if(!ptag)
@@ -50,7 +44,7 @@ function delLastChar(){
     updateDisplay(numbers || '');
 }
 
-//function for = or enter for final calculations
+//function for = or enter for final calculations also handles and shows errors 
 function calc()
 {
     
@@ -61,12 +55,13 @@ function calc()
             updateDisplay(numbers);     
         }
     } catch (error) {
-        updateDisplay(error);
+        updateDisplay("Invalid Input Press ESC To clear");
         numbers = '';
     }
     
 }
 
+//adding click events to all buttons
 buttons.forEach(button => 
     button.addEventListener('click', (e)=> {
         const content = e.target.textContent;
@@ -83,12 +78,30 @@ buttons.forEach(button =>
         
     })
 )
+//adding click events to = and del buttons
 eq.addEventListener('click', calc);
 
 del.addEventListener('click', delLastChar);
-tapEffect(del);
-tapEffect(eq);
 
+//adding touch effects for touch devices for = and del buttons 
+// adds and removes class for touch effect
+del.addEventListener('touchstart',()=>{
+    del.classList.add('delHover');
+})
+
+del.addEventListener('touchend',()=>{
+    del.classList.remove('delHover');
+})
+
+eq.addEventListener('touchstart',()=>{
+    eq.classList.add('equalHover');
+})
+
+eq.addEventListener('touchend',()=>{
+    eq.classList.remove('equalHover');
+})
+
+//adding keyboard events for all buttons
 document.addEventListener('keyup', (event) => {
 
     const key = event.key;
@@ -115,7 +128,7 @@ document.addEventListener('keyup', (event) => {
         updateDisplay(numbers);
     }
     
-})
+});
         
 
 

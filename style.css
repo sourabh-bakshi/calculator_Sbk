@@ -63,7 +63,6 @@ html, body {
   position: relative;
   flex-direction: column-reverse;
   align-items: flex-end;
-  /* position: relative; */
     
 } 
 span{
@@ -94,17 +93,13 @@ button{
 	            inset 0 0 10px 0 #ffb3d5;
 }
 
-button:hover{
+/* button:hover{
     background-color: rgb(230, 165, 45);
     box-shadow: 4px 4px 4px rgb(22, 22, 22);
     width: 84%;
     height: 84%;        
-}
-button.active{
-    background-color: #ee6a6a;    
-    outline: none;
-    border: none;
-}
+} */
+
 
 .ESC{
     margin-top: 3px;
@@ -123,16 +118,6 @@ button.active{
     visibility: hidden;
 }
 
-.del:hover{
-    background-color: rgb(228, 57, 57);
-}
-.del.active{
-    background-color: rgb(247, 4, 4);
-}
-
-.eq.active{
-  background-color: rgb(247, 4, 4);
-}
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
@@ -164,13 +149,37 @@ button.active{
     height: 10%; /* Adjust ESC height for smaller screens */
     font-size: medium; /* Adjust ESC font size for smaller screens */
   }
-  button:hover {
-    width: initial; /* Adjust button hover width for smaller screens */
-    height: initial; /* Adjust button hover height for smaller screens */
-    background-color: initial;
-    box-shadow: initial;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover{
+    background-color: rgb(230, 165, 45);
+    box-shadow: 4px 4px 4px rgb(22, 22, 22);
+    transform: scale(1.0);   
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }  
+  .del:hover{
+    background-color: rgb(228, 57, 57);
   }
-  
+  .equal:hover{
+    background-color: rgb(89, 85, 85);
+  }
+}
+.buttonHover{
+    background-color: rgb(230, 165, 45);
+    transform: scale(1.0);
+    box-shadow: 4px 4px 4px rgb(22, 22, 22);
+}
+.delHover{
+  background-color: rgb(228, 57, 57);
+  transform: scale(1.0);       
+  box-shadow: 4px 4px 4px rgb(22, 22, 22);
+}
+.equalHover{
+  background-color: rgb(89, 85, 85);
+  transform: scale(1.0);       
+  box-shadow: 4px 4px 4px rgb(22, 22, 22);
 }
 
 
