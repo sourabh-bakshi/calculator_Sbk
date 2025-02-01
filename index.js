@@ -2,8 +2,9 @@ const buttons = document.querySelectorAll('.buttons');
 const display = document.querySelector('#display');
 const del = document.querySelector('.del');
 const eq = document.querySelector('.equal');
-const esc =  document.querySelector('.ESC');
-const clear = document.querySelector('.Clr');
+let esc =  document.querySelector('.ESC');
+let clear = document.querySelector('.Clr');
+let deviceType = (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
 let ptag = document.querySelector('span');
 let numbers = '';
 
@@ -11,18 +12,37 @@ let numbers = '';
 
 clear.addEventListener('touchstart',()=>{
     clear.classList.add('ClrHover');
-    numbers = '';
-    updateDisplay(numbers);
-})
+},{passive:false})
 
 clear.addEventListener('touchend',()=>{
     clear.classList.remove('ClrHover');
-
-})
-function setVisibilityClr(){
-    
-    clear.style.display = numbers ? 'block' : 'none';
+    numbers = '';
+    updateDisplay(numbers);
+},{passive:false})
+function setButtonVisibility(){
+    if(numbers)
+    {
+        if(deviceType)
+        {
+            clear.style.visibility = 'visible';
+            esc.style.visibility = 'hidden';
+        }
+        else
+        {
+            esc.style.visibility = 'visible';
+            clear.style.visibility = 'hidden';
+        }
+    }
+    else
+    {
+        esc.style.visibility = 'hidden';
+        clear.style.visibility = 'hidden';
+    }
 }
+
+document.addEventListener('DOMContentLoaded',()=>{
+    setButtonVisibility();
+})
 
 //adding tapeffect for touch devices
 buttons.forEach(button =>{
@@ -35,15 +55,10 @@ function tapEffect(el) {
     el.addEventListener('touchstart',()=>{
         el.classList.add('buttonHover');
         
-    })   
+    },{passive:false})   
     el.addEventListener('touchend',()=>{
         el.classList.remove('buttonHover');
-    });
-}
-//set visisbility of ESC button
-function setVisibility(){
-    
-    esc.style.visibility = numbers ? 'visible' : 'hidden';
+    },{passive:false});
 }
 
 //function to be called whenever number is changed in anyway
@@ -55,8 +70,7 @@ function updateDisplay(content){
         // display.innerHTML += `<div class="ESC">Press ESC To Clear</div>`;
     }
     ptag.textContent = content;  
-    setVisibility();
-    setVisibilityClr();
+    setButtonVisibility();
 }
 //delete character used in backspace and delete button
 function delLastChar(){
@@ -75,7 +89,13 @@ function calc()
             updateDisplay(numbers);     
         }
     } catch (error) {
-        updateDisplay("Invalid Input Press ESC To clear");
+        if(deviceType){
+            updateDisplay("Invalid Input Press Del To clear");
+        }
+        else
+        {
+            updateDisplay("Invalid Input Press ESC To clear");
+        }
         numbers = '';
     }
     
@@ -107,19 +127,19 @@ del.addEventListener('click', delLastChar);
 // adds and removes class for touch effect
 del.addEventListener('touchstart',()=>{
     del.classList.add('delHover');
-})
+},{passive:false})
 
 del.addEventListener('touchend',()=>{
     del.classList.remove('delHover');
-})
+},{passive:false})
 
 eq.addEventListener('touchstart',()=>{
     eq.classList.add('equalHover');
-})
+},{passive:false})
 
 eq.addEventListener('touchend',()=>{
     eq.classList.remove('equalHover');
-})
+},{passive:false})
 
 //adding keyboard events for all buttons
 document.addEventListener('keyup', (event) => {
