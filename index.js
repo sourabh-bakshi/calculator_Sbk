@@ -3,11 +3,26 @@ const display = document.querySelector('#display');
 const del = document.querySelector('.del');
 const eq = document.querySelector('.equal');
 const esc =  document.querySelector('.ESC');
-const container = document.querySelector('.container');
-const welcome = document.querySelector('.welcome');
+const clear = document.querySelector('.Clr');
 let ptag = document.querySelector('span');
 let numbers = '';
 
+//clears the display and numbers
+
+clear.addEventListener('touchstart',()=>{
+    clear.classList.add('ClrHover');
+    numbers = '';
+    updateDisplay(numbers);
+})
+
+clear.addEventListener('touchend',()=>{
+    clear.classList.remove('ClrHover');
+
+})
+function setVisibilityClr(){
+    
+    clear.style.display = numbers ? 'block' : 'none';
+}
 
 //adding tapeffect for touch devices
 buttons.forEach(button =>{
@@ -27,6 +42,7 @@ function tapEffect(el) {
 }
 //set visisbility of ESC button
 function setVisibility(){
+    
     esc.style.visibility = numbers ? 'visible' : 'hidden';
 }
 
@@ -40,6 +56,7 @@ function updateDisplay(content){
     }
     ptag.textContent = content;  
     setVisibility();
+    setVisibilityClr();
 }
 //delete character used in backspace and delete button
 function delLastChar(){
