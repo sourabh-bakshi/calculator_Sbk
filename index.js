@@ -3,8 +3,11 @@ const display = document.querySelector('#display');
 const del = document.querySelector('.del');
 const eq = document.querySelector('.equal');
 const esc =  document.querySelector('.ESC');
+const container = document.querySelector('.container');
+const welcome = document.querySelector('.welcome');
 let ptag = document.querySelector('span');
 let numbers = '';
+
 
 //adding tapeffect for touch devices
 buttons.forEach(button =>{
